@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  inventory-cache:
+    
+    image: redis:7-alpine
+    container_name: ecommerce_redis_container
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_data:/data
+    # Ensures the container automatically boots up if your PC restarts
+    restart: unless-stopped
+    
+volumes:
+  redis_data:
