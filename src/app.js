@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 import Redis from "ioredis";
 import cookieParser from "cookie-parser";
 import adminRoutes from "./routes/admin.routes.js";
+import authRoutes from "./routes/auth.routes.js";
 
 const app = express();
 
@@ -10,6 +11,7 @@ const app = express();
 app.use(express.json());
 app.use(cookieParser());
 app.use("/api/admin", adminRoutes);
+app.use("/api/auth", authRoutes);
 
 const redis = new Redis(process.env.REDIS_URL || "redis://localhost:6379");
 
